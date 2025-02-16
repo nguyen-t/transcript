@@ -13,7 +13,7 @@
   "bugs": {
     "url": ""
   },
-  "version": "0.0.5",
+  "version": "0.0.1",
   "main": "index.js",
   "types": "index.d.ts",
   "napi": {
@@ -22,13 +22,13 @@
   "license": "MIT",
   "devDependencies": {
     "@napi-rs/cli": "^2.17.0",
-    "@types/node": "^20.10.6",
-    "ava": "^5.1.1"
+    "@types/node": "^22.13.4",
+    "ava": "^6.2.0"
   },
   "ava": {
     "timeout": "15m",
     "files": [
-      "!whisper/**"
+      "!whisper.cpp/**"
     ]
   },
   "engines": {

@@ -7,8 +7,8 @@ export const enum WhisperSamplingStrategy {
   GREEDY = 0,
   BEAM_SEARCH = 1
 }
-export class Whisper {
-  constructor(path: string, gpu?: boolean | undefined | null)
+export declare class Whisper {
+  constructor(path: string)
   infer(buffer: Buffer): string
   strategy(strategy: WhisperSamplingStrategy, value: number): this
   nThreads(numThreads: number): this
@@ -29,13 +29,12 @@ export class Whisper {
   maxLen(segmentLength: number): this
   splitOnWord(enableSplitOnWord: boolean): this
   maxTokens(tokenLength: number): this
-  speedUp(enableFastforward: boolean): this
   debugMode(enableDebug: boolean): this
   audioCtx(contextLength: number): this
-  initialPrompt(prompt: string): this
+  tdrzEnable(enableTdrz: boolean): this
   language(countryCode: string): this
   suppressBlank(hideBlanks: boolean): this
-  suppressNonSpeechTokens(hideNonSpeechTokens: boolean): this
+  suppressNst(hideNst: boolean): this
   temperature(value: number): this
   maxInitialTs(value: number): this
   lengthPenalty(penalty: number): this

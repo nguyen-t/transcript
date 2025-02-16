@@ -37,7 +37,7 @@ switch (platform) {
           if (localFileExisted) {
             nativeBinding = require('./whisper.android-arm64.node')
           } else {
-            nativeBinding = require('@nguyen-t/whisper-android-arm64')
+            nativeBinding = require('@nguyen-t/transcript-android-arm64')
           }
         } catch (e) {
           loadError = e
@@ -49,7 +49,7 @@ switch (platform) {
           if (localFileExisted) {
             nativeBinding = require('./whisper.android-arm-eabi.node')
           } else {
-            nativeBinding = require('@nguyen-t/whisper-android-arm-eabi')
+            nativeBinding = require('@nguyen-t/transcript-android-arm-eabi')
           }
         } catch (e) {
           loadError = e
@@ -69,7 +69,7 @@ switch (platform) {
           if (localFileExisted) {
             nativeBinding = require('./whisper.win32-x64-msvc.node')
           } else {
-            nativeBinding = require('@nguyen-t/whisper-win32-x64-msvc')
+            nativeBinding = require('@nguyen-t/transcript-win32-x64-msvc')
           }
         } catch (e) {
           loadError = e
@@ -83,7 +83,7 @@ switch (platform) {
           if (localFileExisted) {
             nativeBinding = require('./whisper.win32-ia32-msvc.node')
           } else {
-            nativeBinding = require('@nguyen-t/whisper-win32-ia32-msvc')
+            nativeBinding = require('@nguyen-t/transcript-win32-ia32-msvc')
           }
         } catch (e) {
           loadError = e
@@ -97,7 +97,7 @@ switch (platform) {
           if (localFileExisted) {
             nativeBinding = require('./whisper.win32-arm64-msvc.node')
           } else {
-            nativeBinding = require('@nguyen-t/whisper-win32-arm64-msvc')
+            nativeBinding = require('@nguyen-t/transcript-win32-arm64-msvc')
           }
         } catch (e) {
           loadError = e
@@ -113,7 +113,7 @@ switch (platform) {
       if (localFileExisted) {
         nativeBinding = require('./whisper.darwin-universal.node')
       } else {
-        nativeBinding = require('@nguyen-t/whisper-darwin-universal')
+        nativeBinding = require('@nguyen-t/transcript-darwin-universal')
       }
       break
     } catch {}
@@ -124,7 +124,7 @@ switch (platform) {
           if (localFileExisted) {
             nativeBinding = require('./whisper.darwin-x64.node')
           } else {
-            nativeBinding = require('@nguyen-t/whisper-darwin-x64')
+            nativeBinding = require('@nguyen-t/transcript-darwin-x64')
           }
         } catch (e) {
           loadError = e
@@ -138,7 +138,7 @@ switch (platform) {
           if (localFileExisted) {
             nativeBinding = require('./whisper.darwin-arm64.node')
           } else {
-            nativeBinding = require('@nguyen-t/whisper-darwin-arm64')
+            nativeBinding = require('@nguyen-t/transcript-darwin-arm64')
           }
         } catch (e) {
           loadError = e
@@ -157,7 +157,7 @@ switch (platform) {
       if (localFileExisted) {
         nativeBinding = require('./whisper.freebsd-x64.node')
       } else {
-        nativeBinding = require('@nguyen-t/whisper-freebsd-x64')
+        nativeBinding = require('@nguyen-t/transcript-freebsd-x64')
       }
     } catch (e) {
       loadError = e
@@ -174,7 +174,7 @@ switch (platform) {
             if (localFileExisted) {
               nativeBinding = require('./whisper.linux-x64-musl.node')
             } else {
-              nativeBinding = require('@nguyen-t/whisper-linux-x64-musl')
+              nativeBinding = require('@nguyen-t/transcript-linux-x64-musl')
             }
           } catch (e) {
             loadError = e
@@ -187,7 +187,7 @@ switch (platform) {
             if (localFileExisted) {
               nativeBinding = require('./whisper.linux-x64-gnu.node')
             } else {
-              nativeBinding = require('@nguyen-t/whisper-linux-x64-gnu')
+              nativeBinding = require('@nguyen-t/transcript-linux-x64-gnu')
             }
           } catch (e) {
             loadError = e
@@ -203,7 +203,7 @@ switch (platform) {
             if (localFileExisted) {
               nativeBinding = require('./whisper.linux-arm64-musl.node')
             } else {
-              nativeBinding = require('@nguyen-t/whisper-linux-arm64-musl')
+              nativeBinding = require('@nguyen-t/transcript-linux-arm64-musl')
             }
           } catch (e) {
             loadError = e
@@ -216,7 +216,7 @@ switch (platform) {
             if (localFileExisted) {
               nativeBinding = require('./whisper.linux-arm64-gnu.node')
             } else {
-              nativeBinding = require('@nguyen-t/whisper-linux-arm64-gnu')
+              nativeBinding = require('@nguyen-t/transcript-linux-arm64-gnu')
             }
           } catch (e) {
             loadError = e
@@ -224,17 +224,32 @@ switch (platform) {
         }
         break
       case 'arm':
-        localFileExisted = existsSync(
-          join(__dirname, 'whisper.linux-arm-gnueabihf.node')
-        )
-        try {
-          if (localFileExisted) {
-            nativeBinding = require('./whisper.linux-arm-gnueabihf.node')
-          } else {
-            nativeBinding = require('@nguyen-t/whisper-linux-arm-gnueabihf')
+        if (isMusl()) {
+          localFileExisted = existsSync(
+            join(__dirname, 'whisper.linux-arm-musleabihf.node')
+          )
+          try {
+            if (localFileExisted) {
+              nativeBinding = require('./whisper.linux-arm-musleabihf.node')
+            } else {
+              nativeBinding = require('@nguyen-t/transcript-linux-arm-musleabihf')
+            }
+          } catch (e) {
+            loadError = e
           }
-        } catch (e) {
-          loadError = e
+        } else {
+          localFileExisted = existsSync(
+            join(__dirname, 'whisper.linux-arm-gnueabihf.node')
+          )
+          try {
+            if (localFileExisted) {
+              nativeBinding = require('./whisper.linux-arm-gnueabihf.node')
+            } else {
+              nativeBinding = require('@nguyen-t/transcript-linux-arm-gnueabihf')
+            }
+          } catch (e) {
+            loadError = e
+          }
         }
         break
       case 'riscv64':
@@ -246,7 +261,7 @@ switch (platform) {
             if (localFileExisted) {
               nativeBinding = require('./whisper.linux-riscv64-musl.node')
             } else {
-              nativeBinding = require('@nguyen-t/whisper-linux-riscv64-musl')
+              nativeBinding = require('@nguyen-t/transcript-linux-riscv64-musl')
             }
           } catch (e) {
             loadError = e
@@ -259,11 +274,25 @@ switch (platform) {
             if (localFileExisted) {
               nativeBinding = require('./whisper.linux-riscv64-gnu.node')
             } else {
-              nativeBinding = require('@nguyen-t/whisper-linux-riscv64-gnu')
+              nativeBinding = require('@nguyen-t/transcript-linux-riscv64-gnu')
             }
           } catch (e) {
             loadError = e
           }
+        }
+        break
+      case 's390x':
+        localFileExisted = existsSync(
+          join(__dirname, 'whisper.linux-s390x-gnu.node')
+        )
+        try {
+          if (localFileExisted) {
+            nativeBinding = require('./whisper.linux-s390x-gnu.node')
+          } else {
+            nativeBinding = require('@nguyen-t/transcript-linux-s390x-gnu')
+          }
+        } catch (e) {
+          loadError = e
         }
         break
       default:

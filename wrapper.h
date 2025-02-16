@@ -1,1 +1,1 @@
-#include "whisper/whisper.h"
+#include "whisper.cpp/include/whisper.h"
