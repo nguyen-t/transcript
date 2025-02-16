@@ -199,3 +199,4 @@ Cargo.lock
 
 @nguyen-t/
 bindings/
+whisper.cpp/
