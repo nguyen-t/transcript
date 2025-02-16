@@ -4,7 +4,7 @@
 npm/
 docker/
 __test__/
-whisper/
+whisper.cpp/
 artifacts/
 bindings/
 src/

@@ -1,6 +1,6 @@
 [package]
 edition = "2021"
-name = "nguyen-t_whisper"
+name = "nguyen-t_transcript"
 version = "0.0.0"
 
 [lib]
