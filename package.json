@@ -16,6 +16,7 @@
   "version": "0.0.1",
   "main": "index.js",
   "types": "index.d.ts",
+  "type": "module",
   "napi": {
     "name": "whisper"
   },
@@ -43,5 +44,6 @@
     "universal": "napi universal",
     "version": "napi version"
   },
+  "bin": "./build.js",
   "packageManager": "yarn@4.0.2"
 }
