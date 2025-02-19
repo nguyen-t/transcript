@@ -21,10 +21,8 @@
     "name": "whisper"
   },
   "license": "MIT",
-  "dependencies": {
-    "@napi-rs/cli": "^2.17.0"
-  },
   "devDependencies": {
+    "@napi-rs/cli": "^2.18.4",
     "@types/node": "^22.13.4",
     "ava": "^6.2.0"
   },

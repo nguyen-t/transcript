@@ -6,7 +6,7 @@ const options = {
   'recursive': true,
 };
 
-execSync('npm run build');
+execSync('npx @napi-rs/cli build --platform --release');
 rmSync(`${root}/bindings`, options);
 rmSync(`${root}/target`, options);
 rmSync(`${root}/whisper.cpp`, options);
