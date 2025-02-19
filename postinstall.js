@@ -7,7 +7,7 @@ const options = {
 };
 
 execSync('npm run build');
-// rmSync(`${root}/bindings`, options);
-// rmSync(`${root}/target`, options);
-// rmSync(`${root}/whisper.cpp`, options);
-// rmSync(`${root}/node_modules`, options);
+rmSync(`${root}/bindings`, options);
+rmSync(`${root}/target`, options);
+rmSync(`${root}/whisper.cpp`, options);
+rmSync(`${root}/node_modules`, options);
