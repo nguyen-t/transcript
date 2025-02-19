@@ -1,6 +1,7 @@
-#![allow(unused_imports)]
 extern crate bindgen;
 extern crate napi_build;
+
+use std::fs;
 
 fn main() {
   println!("cargo:rustc-link-search=native={}", "whisper.cpp/build/src");
@@ -12,6 +13,8 @@ fn main() {
   println!("cargo:rerun-if-changed={}", "whisper");
   println!("cargo:rerun-if-changed={}", "wrapper.h");
 
+  fs::create_dir("bindings")
+    .expect("Directory bindings already created");
   bindgen::Builder::default()
     .header("wrapper.h")
     .clang_arg("-Iwhisper.cpp/ggml/include")
