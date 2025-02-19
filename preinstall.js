@@ -21,7 +21,6 @@ try {
 try {
   execSync(`cmake ${WHISPER_DIR} -B ${BUILD_DIR} ${CMAKE_OPTIONS}`);
   execSync(`cmake --build ${BUILD_DIR} --config Release `);
-  execSync('npm run build');
 } catch (error) {
   console.log(error);
 }

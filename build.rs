@@ -1,9 +1,12 @@
 extern crate bindgen;
 extern crate napi_build;
 
-use std::fs;
+use std::{env, fs};
 
 fn main() {
+  let root = env::current_dir().unwrap();
+
+  println!("Directory: {}", root.display());
   println!("cargo:rustc-link-search=native={}", "whisper.cpp/build/src");
   println!("cargo:rustc-link-search=native={}", "whisper.cpp/build/ggml/src");
   println!("cargo:rustc-link-lib=static:+whole-archive={}", "whisper");
