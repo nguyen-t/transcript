@@ -16,13 +16,11 @@
   "version": "0.0.1",
   "main": "index.js",
   "types": "index.d.ts",
-  "type": "module",
   "napi": {
     "name": "whisper"
   },
   "license": "MIT",
   "devDependencies": {
-    "@napi-rs/cli": "^2.18.4",
     "@types/node": "^22.13.4",
     "ava": "^6.2.0"
   },
@@ -36,15 +34,12 @@
     "node": ">= 10"
   },
   "scripts": {
-    "artifacts": "napi artifacts",
-    "build": "napi build --platform --release",
-    "build:debug": "napi build --platform",
-    "prepublishOnly": "napi prepublish -t npm",
+    "build": "npx @napi-rs/cli build --platform --release",
+    "build:debug": "npx @napi-rs/cli build --platform",
+    "prepublishOnly": "npx @napi-rs/cli prepublish -t npm",
     "preinstall": "node preinstall.js",
     "postinstall": "node postinstall.js",
-    "test": "ava",
-    "universal": "napi universal",
-    "version": "napi version"
+    "test": "ava"
   },
   "bin": "./build.js",
   "packageManager": "yarn@4.0.2"

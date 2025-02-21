@@ -348,8 +348,6 @@ impl Drop for Whisper {
 
     unsafe { 
       whisper_free(ctx);
-      whisper_free_context_params(&mut self.cparams);
-      whisper_free_params(&mut self.wparams);
     };
   }
 }

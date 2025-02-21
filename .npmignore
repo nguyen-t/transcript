@@ -7,3 +7,5 @@ whisper.cpp/
 .prettierignore
 .yarnrc.yml
 *.node
+index.js
+index.d.ts

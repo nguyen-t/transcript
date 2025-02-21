@@ -34,11 +34,6 @@
     semver "^7.5.3"
     tar "^7.4.0"
 
-"@napi-rs/cli@^2.18.4":
-  version "2.18.4"
-  resolved "https://registry.npmjs.org/@napi-rs/cli/-/cli-2.18.4.tgz"
-  integrity sha512-SgJeA4df9DE2iAEpr3M2H0OKl/yjtg1BnRI5/JyowS71tUWhrfSu2LT0V3vlHET+g1hBVlrO60PmEXwUEKp8Mg==
-
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
   resolved "https://registry.npmjs.org/@nodelib/fs.scandir/-/fs.scandir-2.1.5.tgz"
