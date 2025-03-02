@@ -8,12 +8,12 @@ crate-type = ["cdylib"]
 
 [dependencies]
 hound = "3.5.1"
-napi = { version = "2.16.13", default-features = false, features = ["napi4"] }
+napi = { version = "2.16.16", default-features = false, features = ["napi4"] }
 napi-derive = "2.16.13"
 
 [build-dependencies]
 bindgen = "0.71.1"
-napi-build = "2.1.4"
+napi-build = "2.1.5"
 
 [profile.release]
 lto = true
