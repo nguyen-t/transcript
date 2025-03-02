@@ -3,7 +3,7 @@ import { readFileSync } from 'node:fs';
 import { Whisper, WhisperSamplingStrategy } from '../index.js';
 
 test('Whisper initialization', (t) => {
-  const whisper = new Whisper('whisper.cpp/models/for-tests-ggml-tiny.en.bin')
+  const whisper = new Whisper('whisper.cpp/models/for-tests-ggml-tiny.en.bin', undefined, true)
     .strategy(WhisperSamplingStrategy.GREEDY, 2)
     .nThreads(1)
     .nMaxTextCtx(-1)

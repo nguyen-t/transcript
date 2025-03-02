@@ -32,10 +32,28 @@ pub struct Whisper {
 #[napi]
 impl Whisper {
   #[napi(constructor)]
-  pub fn new(path: String) -> Self {
+  pub fn new(path: String, gpu: Option<i32>, flash_attention: bool) -> Self {
     let model_path = CString::new(path).unwrap();
-    let cparams = unsafe {
-      whisper_context_default_params()
+    let use_gpu = match gpu {
+      Some(_) => true,
+      None => false,
+    };
+    let gpu_device = match gpu {
+      Some(index) => index,
+      None => 0,
+    };
+    let cparams = whisper_context_params {
+      use_gpu: use_gpu,
+      flash_attn: flash_attention,
+      gpu_device: gpu_device,
+      dtw_token_timestamps: false,
+      dtw_aheads_preset: whisper_alignment_heads_preset_WHISPER_AHEADS_NONE,
+      dtw_n_top: -1,
+      dtw_aheads: whisper_aheads {
+        n_heads: 0,
+        heads: std::ptr::null(),
+      },
+      dtw_mem_size: 1024 * 1024 * 128,
     };
     let wparams = unsafe {
       whisper_full_default_params(whisper_sampling_strategy_WHISPER_SAMPLING_GREEDY)
@@ -254,21 +272,13 @@ impl Whisper {
     self
   }
 
-  // #[napi]
-  // pub fn initial_prompt(&mut self, prompt: String) -> &Self {
-  //   self.prompt = CString::new(prompt).unwrap();
-  //   self.wparams.initial_prompt = self.prompt.as_ptr();
+  #[napi]
+  pub fn initial_prompt(&mut self, prompt: String) -> &Self {
+    self.prompt = CString::new(prompt).unwrap();
+    self.wparams.initial_prompt = self.prompt.as_ptr();
 
-  //   self
-  // }
-
-  // #[napi]
-  // pub fn prompt_tokens(&mut self, prompt: Vec<i32>) -> &Self {
-  //   self.wparams.prompt_tokens = prompt.clone().as_ptr();
-  //   self.wparams.prompt_n_tokens = prompt.len() as i32;
-
-  //   self
-  // }
+    self
+  }
 
   #[napi]
   pub fn language(&mut self, country_code: String) -> &Self {
