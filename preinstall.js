@@ -1,4 +1,4 @@
-import { execSync } from 'node:child_process';
+const { execSync } = require('node:child_process');
 
 const WHISPER_CPP = 'https://github.com/ggerganov/whisper.cpp';
 const WHISPER_DIR = 'whisper.cpp';
@@ -20,7 +20,7 @@ try {
 }
 try {
   execSync(`cmake ${WHISPER_DIR} -B ${BUILD_DIR} ${CMAKE_OPTIONS}`);
-  execSync(`cmake --build ${BUILD_DIR} --config Release `);
+  execSync(`cmake --build ${BUILD_DIR} --config Release`);
 } catch (error) {
   console.log(error);
 }

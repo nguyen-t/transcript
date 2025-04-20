@@ -1,5 +1,5 @@
-import { execSync } from 'node:child_process';
-import { rmSync } from 'node:fs';
+const { execSync } = require('node:child_process');
+const { rmSync } = require('node:fs');
 
 const root = import.meta.dirname;
 const options = {

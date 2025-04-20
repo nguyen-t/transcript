@@ -9,8 +9,8 @@ fn main() {
   println!("cargo:rustc-link-search=native={}", root.join("whisper.cpp/build/src").display());
   println!("cargo:rustc-link-search=native={}", root.join("whisper.cpp/build/ggml/src").display());
   println!("cargo:rustc-link-lib=static:+whole-archive={}", "whisper");
-  println!("cargo:rustc-link-lib=static:+whole-archive={}", "ggml-base");
   println!("cargo:rustc-link-lib=static:+whole-archive={}", "ggml-cpu");
+  println!("cargo:rustc-link-lib=static:+whole-archive={}", "ggml-base");
   println!("cargo:rustc-link-lib=static:+whole-archive={}", "ggml");
   println!("cargo:rerun-if-changed={}", root.join("whisper").display());
   println!("cargo:rerun-if-changed={}", root.join("wrapper.h").display());
