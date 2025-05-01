@@ -7,7 +7,6 @@ const CMAKE_OPTIONS = [
   '',
   'CMAKE_POSITION_INDEPENDENT_CODE=ON',
   'BUILD_SHARED_LIBS=OFF',
-  'GGML_CCACHE=OFF',
   'GGML_OPENMP=OFF',
   ...process.argv.slice(2),
 ].join(' -D').trim();
