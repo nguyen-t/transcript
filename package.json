@@ -21,8 +21,8 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@types/node": "^22.15.3",
-    "ava": "^6.2.0"
+    "@types/node": "^22.15.18",
+    "ava": "^6.3.0"
   },
   "ava": {
     "timeout": "15m",
